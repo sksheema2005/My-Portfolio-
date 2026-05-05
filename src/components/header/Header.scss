@@ -36,6 +36,9 @@
 
 .grey-color {
   color: $subTitle;
+  font-family: "Fira Code", monospace;
+  font-weight: 500;
+  opacity: 0.7;
 }
 
 .header li a {
@@ -61,11 +64,17 @@
 }
 
 .header .logo-name {
-  font-family: "Agustina Regular";
-  font-weight: bold;
-  font-variant-ligatures: no-common-ligatures;
-  -webkit-font-variant-ligatures: no-common-ligatures;
-  padding: 0 10px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.header .logo:hover .logo-name {
+  color: $buttonColor;
+  letter-spacing: 2px;
 }
 
 /* menu */
@@ -179,4 +188,20 @@
   .header {
     font-size: 12px;
   }
+}
+
+.linkedin-header-link i,
+.github-header-link i {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.linkedin-header-link:hover i {
+  color: #0077b5;
+  transform: scale(1.2);
+}
+
+.github-header-link:hover i {
+  color: #333;
+  transform: scale(1.2);
 }

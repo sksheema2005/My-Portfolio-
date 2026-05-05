@@ -11,7 +11,8 @@ import {
   blogSection,
   talkSection,
   achievementSection,
-  resumeSection
+  resumeSection,
+  socialMediaLinks
 } from "../../portfolio";
 
 function Header() {
@@ -76,9 +77,30 @@ function Header() {
               <a href="#resume">Resume</a>
             </li>
           )}
-          <li>
-            <a href="#contact">Contact Me</a>
-          </li>
+          {socialMediaLinks.github && (
+            <li>
+              <a
+                href={socialMediaLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-header-link"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+            </li>
+          )}
+          {socialMediaLinks.linkedin && (
+            <li>
+              <a
+                href={socialMediaLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkedin-header-link"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </li>
+          )}
           <li>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>

@@ -2,8 +2,9 @@
 
 .card-image {
   max-width: 100%;
-  height: auto;
-  width: 250px;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 .card-title {
   color: $titleColor;
@@ -43,6 +44,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  padding: 10px;
 }
 .achievement-cards-div {
   display: grid;

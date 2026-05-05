@@ -1,6 +1,8 @@
 import React from "react";
 import "./AchievementCard.scss";
 
+import {Chip} from "@material-ui/core";
+
 export default function AchievementCard({cardInfo, isDark}) {
   function openUrlInNewTab(url, name) {
     if (!url) {
@@ -12,10 +14,21 @@ export default function AchievementCard({cardInfo, isDark}) {
   }
 
   return (
-    <div className={isDark ? "dark-mode certificate-card" : "certificate-card"}>
+    <div
+      className={isDark ? "dark-mode certificate-card" : "certificate-card"}
+      style={{
+        boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+        border: "none",
+        borderRadius: "15px",
+        overflow: "hidden",
+        transition: "transform 0.3s ease",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-10px)")}
+      onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0)")}
+    >
       <div className="certificate-image-div">
         <img
-          src={cardInfo.image}
+          src={cardInfo.image.default || cardInfo.image}
           alt={cardInfo.imageAlt || "Card Thumbnail"}
           className="card-image"
         ></img>
@@ -31,15 +44,18 @@ export default function AchievementCard({cardInfo, isDark}) {
       <div className="certificate-card-footer">
         {cardInfo.footer.map((v, i) => {
           return (
-            <span
+            <Chip
               key={i}
-              className={
-                isDark ? "dark-mode certificate-tag" : "certificate-tag"
-              }
+              label={v.name}
               onClick={() => openUrlInNewTab(v.url, v.name)}
-            >
-              {v.name}
-            </span>
+              color="primary"
+              variant="outlined"
+              style={{
+                margin: "5px",
+                fontWeight: "600",
+                cursor: "pointer",
+              }}
+            />
           );
         })}
       </div>

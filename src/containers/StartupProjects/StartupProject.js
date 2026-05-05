@@ -4,6 +4,8 @@ import {bigProjects} from "../../portfolio";
 import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 
+import {Chip} from "@material-ui/core";
+
 export default function StartupProject() {
   function openUrlInNewTab(url) {
     if (!url) {
@@ -42,11 +44,24 @@ export default function StartupProject() {
                       ? "dark-mode project-card project-card-dark"
                       : "project-card project-card-light"
                   }
+                  style={{
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = "translateY(-10px)";
+                    e.currentTarget.style.boxShadow =
+                      "0 15px 45px rgba(0,0,0,0.1)";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 >
                   {project.image ? (
                     <div className="project-image">
                       <img
-                        src={project.image}
+                        src={project.image.default || project.image}
                         alt={project.projectName}
                         className="card-image"
                       ></img>
@@ -69,15 +84,18 @@ export default function StartupProject() {
                       <div className="project-card-footer">
                         {project.footerLink.map((link, i) => {
                           return (
-                            <span
+                            <Chip
                               key={i}
-                              className={
-                                isDark ? "dark-mode project-tag" : "project-tag"
-                              }
+                              label={link.name}
                               onClick={() => openUrlInNewTab(link.url)}
-                            >
-                              {link.name}
-                            </span>
+                              color="secondary"
+                              size="small"
+                              style={{
+                                margin: "4px",
+                                fontWeight: "600",
+                                cursor: "pointer",
+                              }}
+                            />
                           );
                         })}
                       </div>

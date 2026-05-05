@@ -37,12 +37,15 @@
 .button-greeting-div {
   display: flex;
   margin-top: 40px;
+  gap: 20px;
 }
 .download-link-button {
   text-decoration: none;
 }
 
 .greeting-text {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
   font-size: 70px;
   line-height: 1.1;
   color: $textColor !important;
